@@ -143,8 +143,13 @@ A partial collection of open source Python scripts developed for the Secuditor p
 ## 🔗 Links and Licenses
 
 - **[Changelog](CHANGELOG.md)**
+- **[Code of Conduct](CODE_OF_CONDUCT.md)**
+<br>
+
 - **[Software License](LICENSE.txt)**
 - **[Third Party Licenses](THIRD_PARTY_LICENSES.txt)**
+<br>
+
 - **Website:** [secuditor.com](https://secuditor.com)
 - **Contact:** info@secuditor.com
 - **GitHub:** [github.com/secuditor](https://github.com/secuditor)
