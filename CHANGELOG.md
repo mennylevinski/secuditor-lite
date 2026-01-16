@@ -3,7 +3,16 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.0.7] – 10.01.2026 – Latest
+## [2.0.8] – 16.01.2026 – Latest
+### New
+- Renamed the software from **Secuditor Free** to **Secuditor Lite**
+
+### Improvements
+- Extended FTP server feature detection capabilities
+
+---
+
+## [2.0.7] – 10.01.2026
 ### Improved
 - Updated the main report and console window visuals
 - Enhanced the sensitive path scan module
