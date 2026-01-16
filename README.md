@@ -1,7 +1,7 @@
 <a name="top"></a>
 
 <div align="center" style="line-height: 0;">
-  <a href="https://github.com/secuditor/secuditor-free">
+  <a href="https://github.com/secuditor/secuditor-lite">
     <img src="media_files/Secuditor-logo-transparent2.png" alt="Secuditor Logo" width="400" height="150">
   </a>
 </div>
@@ -9,22 +9,22 @@
 <br>
 
 <div align="center">
-<a href="#introduction">Introduction</a> &nbsp; ✦ &nbsp;
-<a href="#presentation">Presentation</a> &nbsp; ✦ &nbsp;
-<a href="#getting-started">Download</a> &nbsp; ✦ &nbsp;
-<a href="#safety-notice">Safety Notice</a> &nbsp; ✦ &nbsp;
-<a href="#privacy-policy">Privacy Policy</a> &nbsp; ✦ &nbsp;
-<a href="#more-info">More Info</a>
+<a href="#introduction"><b>Introduction</b></a> &nbsp; ✦ &nbsp;
+<a href="#presentation"><b>Presentation</b></a> &nbsp; ✦ &nbsp;
+<a href="#getting-started"><b>Download</b></a> &nbsp; ✦ &nbsp;
+<a href="#safety-notice"><b>Safety Notice</b></a> &nbsp; ✦ &nbsp;
+<a href="#privacy-policy"><b>Privacy Policy</b></a> &nbsp; ✦ &nbsp;
+<a href="#more-info"><b>More Info</b></a>
 </div>
 
 ---
 
 <a name="introduction"></a>
 
-# Secuditor Free
+# Secuditor Lite
 
-Secuditor is a Python based diagnostic security tool for Windows endpoints and networks with a friendly GUI.<br>
-It helps identify vulnerabilities, improve device's OpSec, and simplify forensic analysis. Suitable for both personal and organizational use.
+A freeware Python based diagnostic security tool for Windows endpoints and networks with a friendly GUI.<br>
+Secuditor helps identify vulnerabilities, improve device's OpSec, and simplify forensic analysis. Suitable for both personal and organizational use.
 
 ---
 <br>
@@ -52,14 +52,14 @@ Compatible with:
 
 <a name="presentation"></a>
 
-## 🎬 Presentation
+## 🎬 Presentation (Windows 11)
 
-### Secuditor running a security audit on a Windows device and displaying reports
+### Secuditor running a security audit and displaying reports
 ![Demo](media_files/animated-gif-secuditor-prod.gif)
 
 <br>
 
-### Checking device OpSec, VPN status, public IP and geolocation exposure
+### Checking device OpSec, VPN status, public IP and geolocation
 ![Demo](media_files/animated-gif-secuditor-vpn.gif)
 
 ---
@@ -70,11 +70,11 @@ Compatible with:
 ## 🚀 Getting Started
 
 ### 1️⃣ Download
-- #### [SecuditorFree_2.0.7.zip](https://github.com/secuditor/secuditor-free/releases/download/2.0.7/SecuditorFree_2.0.7.zip)
+- #### [SecuditorLite_2.0.8.zip](https://github.com/secuditor/secuditor-lite/releases/download/2.0.8/SecuditorLite_2.0.8.zip)
 
 ### 2️⃣ Extract & Run
 - Unzip the file
-- Double-click **SecuditorFree.exe**
+- Double-click **SecuditorLite.exe**
 - For all features to work it is recommended to "Run as administrator"
 
 ### 3️⃣ Navigation
@@ -88,13 +88,13 @@ Compatible with:
 
 ## 🟢 Safety Notice
 
-**Secuditor Free** is digitally signed and safe for use.
+**Secuditor Lite** is digitally signed and safe for use.
 Please ensure that you download the software only from the official source.
 
 Since it is based on Python code, some antivirus programs may incorrectly flag or block its operation.
 If you trust this application, you may need to create an **exception**, add it to a **whitelist** or **restore** the file from your antivirus software’s quarantine area.
 
-Microsoft Defender SmartScreen may also display a warning because **Secuditor Free** is a new, verified application.
+Microsoft Defender SmartScreen may also display a warning because **Secuditor Lite** is a new, verified application.
 When the SmartScreen warning appears:
 1. Click **“More info”**  
 2. Verify that the **Publisher** is `Menahem Levinski`  
@@ -107,7 +107,7 @@ When the SmartScreen warning appears:
 
 ## 📄 Privacy Policy
 
-**Secuditor Free** is a diagnostic security tool that runs locally on your device.  
+**Secuditor Lite** is a diagnostic security tool that runs locally on your device.  
 It does **not collect, store, or transmit any personal data** or system information without the user’s explicit action or consent.
 
 All analyses and reports are generated and stored locally in the same folder where the software resides.  
