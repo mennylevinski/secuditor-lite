@@ -22,7 +22,7 @@
 
 <a name="introduction"></a>
 
-## 🔹 Introduction
+## 📘 Introduction
 
 **Secuditor Lite** is a freeware, Python based diagnostic security tool for Windows endpoints and networks with a friendly GUI.
 It helps identify vulnerabilities, improve device's OpSec, and simplify forensic analysis. Suitable for both personal and organizational use.
