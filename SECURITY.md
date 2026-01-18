@@ -27,10 +27,7 @@ If you discover a security vulnerability related to Secuditor Lite, please repor
 
 ### How to report
 
-Please report security issues via one of the following methods:
-
-* GitHub **Private Security Advisory** (preferred, if available)
-* Direct contact with the maintainer through the official repository communication channels
+Please report security issues via the official email: info@secuditor.com 
 
 When reporting, please include:
 
