@@ -131,7 +131,7 @@ The tool is distributed in its complete form as **freeware** to ensure secure de
 
 ## Shared Modules
 
-A partial collection of open source Python modules developed for the Secuditor project is available in the repository **[Secuditor Modules](https://github.com/secuditor/secuditor-modules)**.
+A collection of open source Python modules developed as part of the Secuditor project is available in the repository **[Secuditor Modules](https://github.com/secuditor/secuditor-modules)**.
 
 ---
 <br>
