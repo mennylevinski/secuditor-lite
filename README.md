@@ -22,12 +22,6 @@
 
 <a name="introduction"></a>
 
-<p align="center">
-░█▀▀░█▀▀░█▀▀░█░█░█▀▄░▀█▀░▀█▀░█▀█░█▀▄░░░█░░░▀█▀░▀█▀░█▀▀
-░▀▀█░█▀▀░█░░░█░█░█░█░░█░░░█░░█░█░█▀▄░░░█░░░░█░░░█░░█▀▀
-░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀▀▀░░▀░░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀
-</p>
-
 ## Introduction
 
 **Secuditor Lite** is a freeware, Python based diagnostic security tool for Windows endpoints and networks with a friendly GUI.
