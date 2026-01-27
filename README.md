@@ -55,7 +55,7 @@ Compatible with:
 
 ## Presentation (Windows 11)
 
-### Secuditor running live security audit and displaying reports
+### Secuditor performing a live security audit and displaying detailed reports
 ![Demo](media_files/animated-gif-secuditor-prod.gif)
 
 ---
