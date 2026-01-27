@@ -66,7 +66,7 @@ Compatible with:
 ## Getting Started
 
 ### 1️⃣ Download
-- #### [SecuditorLite_2.0.9.zip](https://github.com/secuditor/secuditor-lite/releases/download/2.0.9/SecuditorLite_2.0.9.zip)
+- #### [SecuditorLite_2.1.0.zip](https://github.com/secuditor/secuditor-lite/releases/download/2.1.0/SecuditorLite_2.1.0.zip)
 
 ### 2️⃣ Extract & Run
 - Unzip the file
