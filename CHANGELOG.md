@@ -2,15 +2,18 @@
 All notable changes to **Secuditor Free** are documented in this file.
 
 ---
-## [2.1.0] – 27.01.2026 – Latest
+
+## [2.1.0] – 28.01.2026 – Latest
 ### New
+- Added Speed Test button to measure internet throughput
 - Added “jumps” from the summary report for quick navigation
 - Added NTP remote server detection feature
 - Added WinRM remote access detection feature
 
 ### Improvements
 - Updated ASCII logo
-- Minor optimizations in category reports
+- Updated toolbar button
+- Formatting optimizations in some categories
 
 ---
 
