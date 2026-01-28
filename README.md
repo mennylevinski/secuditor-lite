@@ -44,7 +44,7 @@ It helps identify vulnerabilities, improve device OpSec, and simplify forensic a
 
 ## Standard Edition
 
-Compatible with:
+### Compatible with:
 - Windows 10 / 11
 - Windows Server 2016 / 2019 / 2022
 
@@ -62,8 +62,6 @@ Compatible with:
 - Start security audit  
 - About  
 - Menu  
-
-### Secuditor performing a live security audit and displaying detailed reports
 
 <p align="center">
   <a>
