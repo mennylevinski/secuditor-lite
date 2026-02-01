@@ -4,23 +4,23 @@ All notable changes to **Secuditor Free** are documented in this file.
 ---
 
 ## [2.1.1] – 01.02.2026 – Latest
-### New
-- Added cache based performance optimization
+### Added
+- Cache based module performance optimization
 - Enhanced speed test module performance and visuals
 
-### Bug Fixes
-- Fixed navigation issue when jumping from report to categories
+### Fixed
+- Navigation issue when jumping from report to categories
 
 ---
 
 ## [2.1.0] – 28.01.2026
-### New
-- Added Speed Test button to measure internet throughput
-- Added “jumps” from the summary report for quick navigation
-- Added NTP remote server detection feature
-- Added WinRM remote access detection feature
+### Added
+- Speed Test button to measure internet throughput
+- Clickable "jumps" from the summary report for quick navigation
+- NTP remote server detection feature
+- WinRM remote access detection feature
 
-### Improvements
+### Improved
 - Updated ASCII logo
 - Updated toolbar button
 - Formatting optimizations in some categories
@@ -28,17 +28,17 @@ All notable changes to **Secuditor Free** are documented in this file.
 ---
 
 ## [2.0.9] – 24.01.2026
-### Improvements
+### Improved
 - Minor performance optimizations
 - Reshaped some report elements output
 
 ---
 
 ## [2.0.8] – 16.01.2026
-### New
+### Added
 - Renamed the software from **Secuditor Free** to **Secuditor Lite**
 
-### Improvements
+### Improved
 - Extended FTP server feature detection capabilities
 
 ---
