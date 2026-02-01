@@ -3,7 +3,17 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.1.0] – 28.01.2026 – Latest
+## [2.1.1] – 01.02.2026 – Latest
+### New
+- Added cache based performance optimization
+- Enhanced speed test module performance and visuals
+
+### Bug Fixes
+- Fixed navigation issue when jumping from report to categories
+
+---
+
+## [2.1.0] – 28.01.2026
 ### New
 - Added Speed Test button to measure internet throughput
 - Added “jumps” from the summary report for quick navigation
