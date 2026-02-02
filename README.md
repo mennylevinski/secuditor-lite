@@ -66,7 +66,7 @@ It helps identify system vulnerabilities, improve device OpSec, and simplify for
 *The animation below shows the full Secuditor Lite application in action*
 <p align="center">
   <a>
-    <img src="media_files/animated-gif-secuditor-prod.gif" alt="Demo" />
+    <img src="media_files/animated-gif-secuditor-fast.gif" alt="Demo" />
   </a>
 </p>
 
