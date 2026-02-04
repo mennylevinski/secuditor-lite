@@ -13,7 +13,7 @@
 <a href="#presentation"><b>Presentation</b></a> &nbsp; ✦ &nbsp;
 <a href="#getting-started"><b>Download</b></a> &nbsp; ✦ &nbsp;
 <a href="#safety-privacy"><b>Safety & Privacy</b></a> &nbsp; ✦ &nbsp;
-<a href="open-scripts"><b>Shared Modules</b></a> &nbsp; ✦ &nbsp;
+<a href="#open-scripts"><b>Shared Modules</b></a> &nbsp; ✦ &nbsp;
 <a href="#more-info"><b>More Info</b></a>
 </div>
 
