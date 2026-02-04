@@ -3,7 +3,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.1.1] – 01.02.2026 – Latest
+## [2.1.1] – 2026-02-01 – Latest
 ### Added
 - Cache based module performance optimization
 - Enhanced speed test module performance and visuals
@@ -13,7 +13,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.1.0] – 28.01.2026
+## [2.1.0] – 2026-01-28
 ### Added
 - Speed Test button to measure internet throughput
 - Clickable "jumps" from the summary report for quick navigation
@@ -27,14 +27,14 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.0.9] – 24.01.2026
+## [2.0.9] – 2026-01-24
 ### Improved
 - Minor performance optimizations
 - Reshaped some report elements output
 
 ---
 
-## [2.0.8] – 16.01.2026
+## [2.0.8] – 2026-01-16
 ### Added
 - Renamed the software from **Secuditor Free** to **Secuditor Lite**
 
@@ -43,14 +43,14 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.0.7] – 10.01.2026
+## [2.0.7] – 2026-01-10
 ### Improved
 - Updated the main report and console window visuals
 - Enhanced the sensitive path scan module
 
 ---
 
-## [2.0.6] – 07.01.2026
+## [2.0.6] – 2026-01-07
 ### Improved
 - VPN connection detection module enhanced for better accuracy
 
@@ -59,7 +59,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.0.5] – 01.01.2026
+## [2.0.5] – 2026-01-01
 ### Added
 - DHCP server feature check
 - DNS server feature check
@@ -73,7 +73,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.0.4] – 30.12.2025
+## [2.0.4] – 2025-12-30
 ### Added
 - MS-SQL server feature check
 - Updated UI button and description
@@ -81,7 +81,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.0.3] – 27.12.2025
+## [2.0.3] – 2025-30-27
 ### Added
 - NetBIOS protocol check
 - Certificate Authority (CA) server feature check
@@ -89,7 +89,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.0.2] – 20.12.2025
+## [2.0.2] – 2025-12-20
 ### Improved
 - Redesigned main screen visuals
 - Optimized threat intelligence processing
@@ -99,7 +99,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.0.1] – 13.12.2025
+## [2.0.1] – 2025-12-13
 ### Added
 - SNMP server feature check
 - Rsync server feature check
@@ -113,7 +113,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.0.0] – 03.12.2025
+## [2.0.0] – 2025-12-03
 ### Added
 - NTLM policy evaluation
 - PATH environment variable integrity check
@@ -125,7 +125,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [1.9.9] – 21.11.2025
+## [1.9.9] – 2025-11-21
 ### Fixed
 - Network Gateway report issue
 - SSL/TLS interception bug
@@ -135,7 +135,7 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [1.9.8] – 12.11.2025
+## [1.9.8] – 2025-11-12
 ### Added
 - Descriptive text to buttons
 
@@ -147,5 +147,5 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [1.9.7] – 04.11.2025
+## [1.9.7] – 2025-11-04
 ### Initial Public Release
