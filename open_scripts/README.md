@@ -14,20 +14,20 @@ These tools are intended solely for lawful and authorized use. You must obtain e
 
 ## Module Index
 
-- [sp_credential_integrity.py](open_scripts/sp_credential_integrity.py) – Audits Windows credential protection mechanisms
-- [sp_domain_settings.py](open_scripts/sp_domain_settings.py) – Identifies domain affiliation and discovers related settings
-- [sp_gateway_detection.py](open_scripts/sp_gateway_detection.py) – Detects the local network's default gateway and public IP
-- [sp_hash_checksum.py](open_scripts/sp_hash_checksum.py) – Calculates cryptographic file hashes for integrity verification
-- [sp_https_scanner.py](open_scripts/sp_https_scanner.py) - Mini HTTPS security scanner for basic inspection (port 443 only)
-- [sp_installed_apps.py](open_scripts/sp_installed_apps.py) – Outputs a list of applications installed on the device
-- [sp_network_settings.py](open_scripts/sp_network_settings.py) – Presents the device's network adapters and configurations
-- [sp_password_policy.py](open_scripts/sp_password_policy.py) – Evaluates local and domain affiliated password policies
-- [sp_remote_access.py](open_scripts/p_remote_access.py) – Detects remote access capabilities and services exposure
-- [sp_remote_server.py](open_scripts/sp_remote_server.py) – Inspects the system for server side remote features
-- [sp_security_events.py](open_scripts/sp_security_events.py) – Outputs recent Windows security event log entries (requires admin permissions)
-- [sp_security_settings.py](open_scripts/sp_security_settings.py) – Reviews core Windows security posture settings
-- [sp_shared_folders.py](open_scripts/sp_shared_folders.py) – Mapping shared folders on the device (requires admin permissions)
-- [sp_system_audit.py](open_scripts/sp_system_audit.py) – Presents a detailed report of the system's settings and inventory
+- [sp_credential_integrity.py](sp_credential_integrity.py) – Audits Windows credential protection mechanisms
+- [sp_domain_settings.py](sp_domain_settings.py) – Identifies domain affiliation and discovers related settings
+- [sp_gateway_detection.py](sp_gateway_detection.py) – Detects the local network's default gateway and public IP
+- [sp_hash_checksum.py](sp_hash_checksum.py) – Calculates cryptographic file hashes for integrity verification
+- [sp_https_scanner.py](sp_https_scanner.py) - Mini HTTPS security scanner for basic inspection (port 443 only)
+- [sp_installed_apps.py](sp_installed_apps.py) – Outputs a list of applications installed on the device
+- [sp_network_settings.py](sp_network_settings.py) – Presents the device's network adapters and configurations
+- [sp_password_policy.py](sp_password_policy.py) – Evaluates local and domain affiliated password policies
+- [sp_remote_access.py](sp_remote_access.py) – Detects remote access capabilities and services exposure
+- [sp_remote_server.py](sp_remote_server.py) – Inspects the system for server side remote features
+- [sp_security_events.py](sp_security_events.py) – Outputs recent Windows security event log entries (requires admin permissions)
+- [sp_security_settings.py](sp_security_settings.py) – Reviews core Windows security posture settings
+- [sp_shared_folders.py](sp_shared_folders.py) – Mapping shared folders on the device (requires admin permissions)
+- [sp_system_audit.py](sp_system_audit.py) – Presents a detailed report of the system's settings and inventory
 - [sp_workflow_example.py](sp_workflow_example.py) – An example module demonstrating audit workflow and logging 
 
 ---
