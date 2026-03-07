@@ -3,7 +3,18 @@ All notable changes to **Secuditor Free** are documented in this file.
 
 ---
 
-## [2.1.3] – 2026-03-02 - Latest
+## [2.1.4] – 2026-03-07 - Latest
+### Added
+- Left-click "Run Check" option to execute single security checks
+- Controlled timestamps for console messages and exported logs
+
+### Fixed
+- Resolved Network Gateway detection issues on IPv6 networks
+- Resolved MAC/Vendor lookup attempting to run on IPv6 gateways
+
+---
+
+## [2.1.3] – 2026-03-02
 ### Improvements
 - Gateway discovery now supports dual-stack (IPv4 + IPv6)
 - Network settings check now supports dual-stack (IPv4 + IPv6)
