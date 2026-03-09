@@ -2,7 +2,7 @@
 
 <div align="center" style="line-height: 0;">
   <a href="https://github.com/secuditor/secuditor-lite">
-    <img src="media_files/Secuditor-logo-transparent2.png" alt="Secuditor Logo" width="400" height="150">
+    <img src="media_files/Secuditor-logo-transparent2.png" alt="Secuditor Lite" width="400" height="150">
   </a>
 </div>
 
@@ -22,7 +22,7 @@
 
 <a name="introduction"></a>
 
-## All-in-One Endpoint Diagnostics
+# All-in-One Endpoint Diagnostics
 
 **Secuditor Lite** is a free, Python based diagnostic security tool for Windows endpoints and networks with a friendly GUI.
 It helps identify system vulnerabilities, improve device Operational Security (OPSEC), detect network elements, run internet speed test, and generate structured audit reports, all in one place. Suitable for both personal and organizational environments.
