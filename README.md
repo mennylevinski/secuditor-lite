@@ -172,9 +172,9 @@ secuditor-lite/                   # Main project folder
 ├── CHANGELOG.md                  # Project change log
 ├── CONTRIBUTING.md               # Contribution guidelines
 ├── LICENSE.txt                   # License file
-├── README.md                     # Project overview and instructions
+├── README.md                     # Project overview
 ├── SECURITY.md                   # Security policy
-└── THIRD_PARTY_LICENSES.txt      # Third-party software licenses
+└── THIRD_PARTY_LICENSES.txt      # Third party licenses
 ```
 
 ---
