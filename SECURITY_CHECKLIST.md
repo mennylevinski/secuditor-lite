@@ -1,6 +1,6 @@
-## Secuditor Lite – Security Checks & Diagnostics
+## Secuditor Lite – Security Checks & Diagnostics (Version 2.1.5) 
 
-Secuditor Lite provides a structured and comprehensive security audit of Windows systems, helping identify misconfigurations, vulnerabilities, and potential risks across endpoint, network, and operational security layers.
+This file lists the structured and comprehensive security audit elements that **Secuditor Lite** checks on Windows systems, helping identify misconfigurations, vulnerabilities, and potential risks across **endpoint, network, and operational security layers**.
 
 ---
 
