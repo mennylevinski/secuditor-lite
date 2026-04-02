@@ -58,7 +58,7 @@ Secuditor Lite analyzes Windows systems across:
 - SSL interception analysis
 - Security event log audit
 
-➡️ See the full Checklist: [Security Checks](SECURITY_CHECKLIST.md)
+➡️ See the full Checklist: [Security Checklist](SECURITY_CHECKLIST.md)
 
 ---
 <br>
