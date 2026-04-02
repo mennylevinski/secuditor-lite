@@ -53,8 +53,10 @@ This file lists the structured and comprehensive security audit elements that **
 - Firewall configuration and activity  
 - User Account Control (UAC) settings  
 - Core isolation and memory protection  
-- PowerShell execution policy  
-- Disk encryption (BitLocker) status  
+- PowerShell execution policy
+- EFS encryption protocol usage
+- Disk encryption (BitLocker) status
+- Removable storage detection
 - Secure Boot configuration  
 - System restore availability  
 
@@ -71,7 +73,7 @@ This file lists the structured and comprehensive security audit elements that **
 ---
 
 ### 🖥️ Server & Service Exposure
-- Detection of active server roles and services  
+- Detection of AD server roles and services  
 - DHCP, DNS, FTP, SSH, SNMP, SMTP, and more  
 - Web server (IIS) and database services  
 - Remote access and infrastructure services  
@@ -88,7 +90,7 @@ This file lists the structured and comprehensive security audit elements that **
 
 ---
 
-### 👥 User & Access Control
+### 👥 User & Domain Settings
 - Local user accounts and roles  
 - Privileged and administrative users  
 - Workgroup / domain configuration  
@@ -116,7 +118,7 @@ This file lists the structured and comprehensive security audit elements that **
 
 ### 💾 Sensitive Data Exposure
 - Detection of sensitive system files (SAM, SECURITY, etc.)  
-- Identification of potentially exposed configuration files  
+- Identification of potentially exposed database files  
 - Risk assessment of critical system paths  
 
 ---
