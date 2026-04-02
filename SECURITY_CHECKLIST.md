@@ -137,7 +137,6 @@ This file lists the structured and comprehensive security audit elements that **
 ---
 
 ### 📜 Event Log Analysis
-- Windows Event Logs inspection (Security, System, Application)  
-- Detection of suspicious or anomalous events  
+- Windows security event logs inspection  
 - Analysis of authentication and login activity  
 - Identification of potential security incidents  
