@@ -186,7 +186,7 @@ The tool **Secuditor Lite** is distributed in its complete form as a closed sour
 ```bash
 secuditor-lite/                   # Main project folder
 │
-├── media/                  # Media assets (images, GIFs)
+├── media/                        # Media assets (images, GIFs)
 │
 ├── open-scripts/                 # Open source Python scripts
 │
