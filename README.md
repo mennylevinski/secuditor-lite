@@ -2,7 +2,7 @@
 
 <div align="center" style="line-height: 0;">
   <a href="https://github.com/secuditor/secuditor-lite">
-    <img src="media_files/Secuditor-logo-transparent2.png" alt="Secuditor Diagnostic Security Tool logo" width="200" height="200">
+    <img src="media/Secuditor-logo-transparent2.png" alt="Secuditor Diagnostic Security Tool logo" width="200" height="200">
   </a>
 </div>
 
@@ -87,7 +87,7 @@ It helps identify system vulnerabilities, improve device Operational Security (O
 *The animation below shows Secuditor Lite application in action*
 <p align="center">
   <a>
-    <img src="media_files/animated-gif-secuditor-fast.gif" alt="Demo" />
+    <img src="media/animated-gif-secuditor-fast.gif" alt="Demo" />
   </a>
 </p>
 
@@ -186,9 +186,9 @@ The tool **Secuditor Lite** is distributed in its complete form as a closed sour
 ```bash
 secuditor-lite/                   # Main project folder
 │
-├── media_files/                  # Media assets (images, GIFs)
+├── media/                  # Media assets (images, GIFs)
 │
-├── open_scripts/                 # Open source Python scripts
+├── open-scripts/                 # Open source Python scripts
 │
 ├── CHANGELOG.md                  # Project change log
 ├── CONTRIBUTING.md               # Contribution guidelines
