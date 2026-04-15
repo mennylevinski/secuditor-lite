@@ -61,7 +61,7 @@ All notable changes to **Secuditor Lite** are documented in this file.
 - Enhanced speed test module performance and visuals
 
 ### Fixed
-- Navigation issue when jumping from report to categories
+- Resolved navigation issue when jumping from report to categories
 
 ---
 
