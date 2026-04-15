@@ -153,13 +153,11 @@ All notable changes to **Secuditor Lite** are documented in this file.
 ### Added
 - SNMP server feature check
 - Rsync server feature check
-
-### Improved
-- Suspicious process detection mechanism
-- Summary report view
+- Improved the suspicious process detection mechanism
+- Enhanced Sthe summary report view 
 
 ### Fixed
-- Password expiration output issue
+- Resolved password expiration output issue
 
 ---
 
@@ -189,7 +187,7 @@ All notable changes to **Secuditor Lite** are documented in this file.
 - Updated the privacy policy title
 
 ### Fixed
-- Windows Core Isolation check issue fixed
+- Resolved Windows Core Isolation check issue
 
 ---
 
