@@ -123,10 +123,10 @@ This file lists the structured and comprehensive security audit elements that **
 
 ---
 
-### ⚙️ Process & Connection Monitoring
+### ⚙️ Process & Connection
 - Detection of suspicious processes  
 - Analysis of active network connections  
-- Identification of unusual or high-risk behavior  
+- Based on unusual or high-risk behavior  
 
 ---
 
