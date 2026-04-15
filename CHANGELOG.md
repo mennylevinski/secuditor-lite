@@ -168,8 +168,8 @@ All notable changes to **Secuditor Lite** are documented in this file.
 - PowerShell script policy analysis
 
 ### Fixed
-- Conflicts between **Single Run** and **Run All** actions
-- Multiple issues affecting the logging system
+- Resolved conflicts between **Single Run** and **Run All** actions
+- Fixed multiple issues affecting the logging system
 
 ---
 
