@@ -1,7 +1,7 @@
 # MIT License – Copyright (c) 2025 Menny Levinski
 
 """
-Presents the device's network adapters and configurations.
+Presents the device's network adapters and configurations (dual-stack).
 """
 
 import os

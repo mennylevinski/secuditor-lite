@@ -1,7 +1,7 @@
 # MIT License – Copyright (c) 2025 Menny Levinski
 
 """
-Detects the local network's default gateway and public IP.
+Detects the local network's default gateway and public IP (dual-stack).
 
 Third-party: requests (urllib3), psutil.
 """

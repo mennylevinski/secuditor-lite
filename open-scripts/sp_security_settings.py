@@ -203,6 +203,7 @@ def get_security_settings():
         "Windows Defender": [],
         "Endpoint Protection": [],
         "Local Firewall": "Unknown",
+        "ASR Rules": "Unknown",
         "EFS Usage": "Unknown",
         "PATH Variables": "Unknown",
         "UAC Elevation": "Unknown",
@@ -279,6 +280,45 @@ def get_security_settings():
 
     except Exception:
         result["Local Firewall"] = "Unknown"
+
+    # --- ASR ---
+    try:
+        path = r"SOFTWARE\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR"
+
+        try:
+            key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
+        except FileNotFoundError:
+            result["ASR Rules"] = "Not Configured"
+            key = None
+
+        rules = {}
+
+        if key:
+            i = 0
+            try:
+                while True:
+                    name, value, _ = winreg.EnumValue(key, i)
+                    rules[name] = value
+                    i += 1
+            except OSError:
+                pass
+            finally:
+                winreg.CloseKey(key)
+
+        if not rules:
+            result["ASR Rules"] = "Not Configured"
+        else:
+            enabled = sum(1 for v in rules.values() if v == 1)
+            audit = sum(1 for v in rules.values() if v == 2)
+            disabled = sum(1 for v in rules.values() if v == 0)
+
+            result["ASR Rules"] = (
+                f"Configured ({len(rules)} rules) | "
+                f"Block: {enabled}, Audit: {audit}, Disabled: {disabled}"
+            )
+
+    except Exception:
+        result["ASR Rules"] = "Unknown"
     
     # --- UAC ---
     try:
