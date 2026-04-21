@@ -31,6 +31,58 @@ def run_hidden_command(cmd_list):
     except Exception as e:
         return ""
 
+# --- Hive Access Check ---
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+def check_hive_access():
+    paths = [
+        r"C:\Windows\System32\config\SAM",
+        r"C:\Windows\System32\config\SECURITY"
+    ]
+
+    results = []
+    admin = is_admin()
+
+    for path in paths:
+
+        # --- NON-ADMIN: try real access ---
+        if not admin:
+            try:
+                with open(path, "rb"):
+                    status = "Accessible ⚠️"
+            except PermissionError:
+                status = "Protected (SYSTEM only)"
+            except Exception:
+                status = "Unknown"
+
+            results.append(f"{path}\n    {status}")
+            continue
+
+        # --- ADMIN: full ACL check ---
+        try:
+            output = subprocess.check_output(
+                f'icacls "{path}"',
+                shell=True,
+                text=True,
+                errors="ignore"
+            )
+
+            if "NT AUTHORITY\\SYSTEM" in output:
+                status = "Protected (SYSTEM only)"
+            else:
+                status = "Unknown"
+
+            results.append(f"{path}\n    {status}")
+
+        except Exception:
+            results.append(f"{path}\n    Unknown")
+
+    return "\n  ".join(results)
+
 # --- Credential Guard ---
 def check_credential_guard():
     if sys.platform != "win32":
@@ -148,6 +200,7 @@ def check_lsass_signature():
 
 # --- Run all credential checks ---
 def run_credential_integrity_checks():
+    check_hive_access_status = check_hive_access()
     credential_guard_status = check_credential_guard()
     wdigest_status = check_wdigest()
     lsass_details = check_lsass_integrity()
@@ -179,6 +232,10 @@ def run_credential_integrity_checks():
     # LSASS Signature
     report.append("LSASS Signature:")
     report.append(f"  {lsass_signature_status}")
+
+    # SAM Hive
+    report.append("SAM Hive:")
+    report.append(f"  {check_hive_access_status}")
 
     return "\n".join(report)
 
