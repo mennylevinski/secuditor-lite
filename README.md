@@ -161,7 +161,7 @@ A collection of open-source Python modules developed as part of the **Secuditor 
 
 The tool **Secuditor Lite** is distributed in its complete form as a closed source freeware to ensure secure design and code integrity which require a controlled and confidential development environment.
 
-### Module Index
+### The Modules
 
 - [sp_credential_integrity.py](open-scripts/sp_credential_integrity.py) – Audits Windows credential protection mechanisms
 - [sp_domain_settings.py](open-scripts/sp_domain_settings.py) – Identifies domain affiliation and discovers related settings
