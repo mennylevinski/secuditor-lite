@@ -1,4 +1,4 @@
-# MIT License – Copyright (c) 2025 Menny Levinski
+# MIT License – Copyright (c) 2025 Menahem Levinski
 
 """
 Mini HTTPS security scanner (port 443 only).
