@@ -3,7 +3,19 @@ All notable changes to **Secuditor Lite** are documented in this file.
 
 ---
 
-## [2.1.7] – 2026-04-20 Latest
+## [2.1.8] – 2026-04-30 Latest
+### Added
+- Removable Storage & USB Autorun checks (Basic Security) 
+- Office Macro Policy system-based check (Basic Security)
+- Enhanced sensitive path scanning with support for additional data types
+
+### Fixed
+- Fixed issue where sensitive path scanning caused unexpected window jumps
+- Corrected Server Features output to accurately display "Not Installed"
+
+---
+
+## [2.1.7] – 2026-04-20
 ### Added
 - Local credential hive access check (Credential Integrity)
 - Microsoft Defender Attack Surface Reduction (ASR) rules check
