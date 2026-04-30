@@ -24,8 +24,9 @@
 
 # Secuditor Lite – Windows Security Tool
 
-**Secuditor Lite** is a free, Python-based diagnostic security tool for Windows endpoints and networks with a friendly GUI.
-It helps identify system vulnerabilities, improve device Operational Security (OPSEC), detect network elements, run internet speed test, and generate structured audit reports, all in one place. Suitable for both personal and organizational environments.
+**Secuditor Lite** is a free, Python-based diagnostic security tool for Windows endpoints and networks, featuring a user friendly GUI. It provides a simple and transparent way to assess system security, helping users identify vulnerabilities, suspicious activity, and misconfigurations while improving device Operational Security (OPSEC).
+
+The tool also detects network elements, runs internet speed tests, and generates structured audit reports, all in one place. Suitable for both personal and organizational environments.
 
 ---
 <br>
