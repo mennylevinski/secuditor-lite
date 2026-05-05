@@ -97,7 +97,7 @@ This file lists the structured and comprehensive security audit elements that **
 ### 👥 User & Domain Settings
 - Local user accounts and roles  
 - Privileged and administrative users  
-- Workgroup / domain configuration  
+- Workgroup / Azure AD / Hybrid domain environments  
 - LAPS (Local Administrator Password Solution) status  
 - NTLM authentication policy and enforcement  
 
