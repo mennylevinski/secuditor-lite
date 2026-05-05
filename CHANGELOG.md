@@ -3,7 +3,18 @@ All notable changes to **Secuditor Lite** are documented in this file.
 
 ---
 
-## [2.1.8] – 2026-04-30 Latest
+## [2.1.8] – 2026-05-05 Latest
+### Added
+- Added detection for Azure AD / Hybrid domain environments (Domain Settings)
+- Improved Server Features scanning with multi-service evaluation per feature
+
+### Changed
+- Updated terminology: Local Firewall → Host-based Firewall
+- General UI and output text refinements
+
+---
+
+## [2.1.8] – 2026-04-30
 ### Added
 - Removable Storage & USB Autorun checks (Basic Security) 
 - Office Macro Policy system-based check (Basic Security)
