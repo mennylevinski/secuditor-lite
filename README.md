@@ -177,7 +177,7 @@ The tool **Secuditor Lite** is distributed in its complete form as a closed sour
 - **[Third Party Licenses](THIRD_PARTY_LICENSES.txt)**
 <br>
 
-- **Website:** [secuditor.com](https://secuditor.com)
+- **Website:** [secuditor.com](https://secuditor.com/)
 - **Contact:** info@secuditor.com
 - **GitHub:** [github.com/secuditor](https://github.com/secuditor)
 
