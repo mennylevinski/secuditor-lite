@@ -52,14 +52,6 @@ Copyright (c) The cryptography developers
 Source: https://github.com/pyca/cryptography/
 
 ------------------------------------------------------------
-Pillow (PIL)
-------------------------------------------------------------
-Historical Permission Notice and Disclaimer (HPND)
-Copyright (c) 1995-2011 Fredrik Lundh
-Copyright (c) 2010-2025 Alex Clark and contributors
-Source: https://github.com/python-pillow/Pillow/
-
-------------------------------------------------------------
 Tcl/Tk (via Tkinter)
 ------------------------------------------------------------
 BSD-style License
