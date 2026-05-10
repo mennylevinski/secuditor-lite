@@ -3,7 +3,19 @@ All notable changes to **Secuditor Lite** are documented in this file.
 
 ---
 
-## [2.1.8] – 2026-05-05 Latest
+## [2.2.0] – 2026-05-10 Latest
+### Added
+- Report building window (via Tk) with selectable views
+- Auto Screen Lock check added to Endpoint Security
+
+### Changed
+- UI and terminology improvements and corrections
+- Renamed "Basic Security" node to "Endpoint Security"
+- Removed Pillow dependency, reducing executable size from 28 MB to 21 MB
+
+---
+
+## [2.1.9] – 2026-05-05
 ### Added
 - Added detection for Azure AD / Hybrid domain environments (Domain Settings)
 - Improved Server Features scanning with multi-service evaluation per feature
