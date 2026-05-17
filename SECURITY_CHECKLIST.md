@@ -88,16 +88,6 @@ For complete and accurate results, the tool should be run with **administrator p
 
 ---
 
-### 🔑 Credential Integrity
-- LSASS process validation and integrity  
-- Credential storage mechanisms (WDigest)  
-- Credential Guard support and status  
-- LSASS protection (RunAsPPL) configuration  
-- Signature validation of security processes
-- Local credential SAM hive access
-
----
-
 ### 👥 User & Domain Settings
 - Local user accounts and roles  
 - Privileged and administrative users  
@@ -116,11 +106,22 @@ For complete and accurate results, the tool should be run with **administrator p
 
 ---
 
-### 🧩 OS Version & Update Status
-- Windows version and build comparison  
-- Activation status  
-- Installed and pending updates  
-- Patch level and update history  
+### 🔑 Credential Integrity
+- LSASS process validation and integrity  
+- Credential storage mechanisms (WDigest)  
+- Credential Guard support and status  
+- LSASS protection (RunAsPPL) configuration  
+- Signature validation of security processes
+- Local credential SAM hive access
+
+---
+
+### 🔐 SSL/TLS Inspection
+- Certificate validation and issuer analysis  
+- Detection of SSL/TLS interception  
+- Verification of certificate chains and fingerprints  
+- Identification of potential man-in-the-middle activity  
+- Key type and strength (RSA/ECDSA) evaluated against minimum security thresholds  
 
 ---
 
@@ -132,21 +133,23 @@ For complete and accurate results, the tool should be run with **administrator p
 ---
 
 ### ⚙️ Process & Connection
-- Detection of suspicious processes  
-- Analysis of active network connections  
-- Based on unusual or high-risk behavior  
+- Detection of suspicious processes based on behavior and execution patterns
+- Digitally signed process validation to none system processes
+- Analysis of active network connections (local and external endpoints)  
+- Correlation between processes and network activity to detect suspicious communication  
+- Detection of abnormal port usage, including high-numbered or commonly abused ports  
 
 ---
 
-### 🔐 SSL/TLS Inspection
-- Certificate validation and issuer analysis  
-- Detection of SSL/TLS interception  
-- Verification of certificate chains and fingerprints  
-- Identification of potential man-in-the-middle activity  
+### 🧩 OS Version & Update Status
+- Windows version and build comparison  
+- Activation status  
+- Installed and pending updates  
+- Patch level and update history  
 
 ---
 
 ### 📜 Event Log Analysis
-- Windows security event logs inspection  
-- Authentication and login activity audit  
-- Potential security incidents review  
+- Windows Security Event Log inspection (specific Event IDs)  
+- Login activity audit including sign-in attempts  
+- Simplified review of potential security incidents  
