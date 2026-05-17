@@ -53,20 +53,20 @@ For complete and accurate results, the tool should be run with **administrator p
 ---
 
 ### 🛡️ Endpoint Security Settings
-- Antivirus / endpoint protection status  
-- Firewall configuration and activity
-- Auto Screen Lock configuration 
+- Antivirus / Endpoint protection status  
+- Firewall status (On / Off) and activity  
+- Auto screen lock configuration review  
 - User Account Control (UAC) settings  
-- Core isolation and memory protection
-- Attack Surface Reduction (ASR) rules
-- PowerShell execution policy
+- Core isolation and memory protection  
+- Attack Surface Reduction (ASR) rules  
+- PowerShell execution policy review  
 - EFS encryption protocol usage  
-- Disk encryption (BitLocker) status
-- Office Macro Security Policy  
-- Removable storage Status  
-- USB Autorun configuration  
-- Secure Boot configuration  
-- System restore availability  
+- Disk encryption (BitLocker) status  
+- Office macro security policy review  
+- Removable storage status check  
+- USB Autorun configuration check  
+- Secure Boot configuration check  
+- System Restore point availability  
 
 ---
 
