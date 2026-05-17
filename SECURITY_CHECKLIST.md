@@ -7,28 +7,30 @@ For complete and accurate results, the tool should be run with **administrator p
 ---
 
 ### 🖥️ System Overview
-- Hostname and OS version detection  
-- System architecture and processor details  
-- CPU cores, threads, and memory usage  
-- Disk structure, file systems, and storage utilization  
+- Hostname and operating system version detection  
+- System architecture (x86/x64/ARM) and processor identification  
+- CPU core count, thread count, and current utilization overview  
+- Memory usage analysis (total, used, and available RAM)  
+- Disk structure overview including partitions, file systems, and storage utilization  
+- Basic system performance snapshot (CPU, RAM, and disk load indicators)  
 
 ---
 
 ### 🔌 Hardware Analysis
-- Detection of connected hardware components  
-- USB devices and controllers  
-- Bluetooth devices and adapters  
-- Biometric devices (e.g. fingerprint readers)  
-- Network interfaces and virtual adapters  
+- Detection of connected hardware components and device classes  
+- USB devices enumeration including storage, input, and peripheral devices  
+- Biometric hardware detection (e.g., fingerprint readers, IR cameras)  
+- Network interfaces enumeration including physical and virtual adapters  
+- Identification of inactive or disabled hardware interfaces  
 
 ---
 
 ### 🌐 Network Configuration
-- Local IP addresses (IPv4 / IPv6)  
-- Subnet masks and routing configuration  
-- Default gateway and DHCP servers  
-- DNS configuration and resolution setup  
-- Network interface availability (Wi-Fi / Ethernet)  
+- Local IP address enumeration (IPv4 and IPv6)  
+- Subnet mask and network segmentation details  
+- Default gateway identification and overview  
+- DHCP and DNS server detection moduls and analysis  
+- Network interface status (Wi-Fi, Ethernet, virtual adapters)  
 
 ---
 
@@ -42,11 +44,11 @@ For complete and accurate results, the tool should be run with **administrator p
 ---
 
 ### 🛰️ Gateway Discovery
-- Gateway vendor identification  
-- MAC and IP address mapping  
-- NAT and VPN detection  
-- Gateway responsiveness (ICMP / HTTP)  
-- Public IP exposure analysis  
+- Gateway vendor identification via MAC OUI lookup  
+- Default gateway MAC and IP address mapping  
+- NAT environment detection and identification of potential VPN/Proxy  
+- Gateway responsiveness testing using ICMP (ping) and HTTP probing  
+- Public IP exposure analysis to determine external-facing network presence  
 
 ---
 
@@ -71,29 +73,29 @@ For complete and accurate results, the tool should be run with **administrator p
 ### 🌍 Remote Access & Exposure
 - Remote Desktop and Remote Assistance status  
 - PowerShell remoting configuration  
-- RPC and remote service exposure
-- Network COM Services analysis
-- Telnet, NetBIOS, UPnPHost, and Bluetooth exposure  
-- WinRM configuration and risk level  
+- RPC Print Spooler and remote service exposure
+- Network COM Services exposure analysis  
+- Telnet, Rsync, NetBIOS, UPnPHost, and Bluetooth exposure  
+- WinRM configuration and risk level analysis  
 - SMB protocol versions (SMBv1 / SMBv2)  
 
 ---
 
 ### 🖥️ Server & Service Exposure
 - Detection of active server roles and features  
-- DHCP, DNS, FTP, SSH, SNMP, SMTP, and more  
-- Web server (IIS) and database services  
-- Remote access and infrastructure services  
-- Identification of unsecured services  
+- DHCP, DNS, DFSR, FTP, LDAP, SSH, SNMP, SMTP, and more  
+- Web server (IIS) and database (SQL) services  
+- Remote access and infrastructure elemnts analysis  
+- Identification of unsecured protocol and services  
 
 ---
 
 ### 👥 User & Domain Settings
-- Local user accounts and roles  
-- Privileged and administrative users  
-- Workgroup, On-Prem Active Directory, Azure AD and Hybrid domain environments
-- LAPS (Local Administrator Password Solution) status  
-- NTLM authentication policy and enforcement  
+- Audit of local user accounts, groups, and assigned roles  
+- Detection of privileged and administrative accounts  
+- Identification of Workgroup, On-Premises Active Directory, Azure AD, and Hybrid domain environments  
+- LAPS (Local Administrator Password Solution) status and activity  
+- NTLM authentication policy and enforcement configuration analysis  
 
 ---
 
@@ -107,18 +109,18 @@ For complete and accurate results, the tool should be run with **administrator p
 ---
 
 ### 🔑 Credential Integrity
-- LSASS process validation and integrity  
-- Credential storage mechanisms (WDigest)  
-- Credential Guard support and status  
-- LSASS protection (RunAsPPL) configuration  
-- Signature validation of security processes
-- Local credential SAM hive access
+- Password length, complexity, and character requirement validation  
+- Password expiration, history, and reuse policy analysis  
+- Account lockout thresholds, reset timers, and lockout duration review  
+- Multi-factor authentication (MFA) capability and enforcement detection  
+- Identification of weak or legacy authentication configurations  
+- Overall password policy strength and compliance assessment  
 
 ---
 
 ### 🔐 SSL/TLS Inspection
 - Certificate validation and issuer analysis  
-- Detection of SSL/TLS interception  
+- Detection of SSL/TLS interception and potential man-in-the-middle  
 - Verification of certificate chains and fingerprints  
 - Identification of potential man-in-the-middle activity  
 - Key type and strength (RSA/ECDSA) evaluated against minimum security thresholds  
