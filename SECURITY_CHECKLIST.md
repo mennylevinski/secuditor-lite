@@ -18,7 +18,7 @@ For complete and accurate results, the tool should be run with **administrator p
 ### 🔌 Hardware Analysis
 - Detection of connected hardware components and device classes  
 - USB devices enumeration including storage, input, and peripheral devices  
-- Biometric hardware detection (e.g., fingerprint readers, IR cameras)  
+- Biometric hardware detection (fingerprint readers, IR cameras)  
 - Network interfaces enumeration including physical and virtual adapters  
 
 ---
