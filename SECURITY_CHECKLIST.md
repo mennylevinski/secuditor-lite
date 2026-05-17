@@ -29,7 +29,7 @@ For complete and accurate results, the tool should be run with **administrator p
 - Local IP address enumeration (IPv4 and IPv6)  
 - Subnet mask and network segmentation details  
 - Default gateway identification and overview  
-- DHCP and DNS server detection moduls and analysis  
+- DHCP and DNS server detection and analysis  
 - Network interface status (Wi-Fi, Ethernet, virtual adapters)  
 
 ---
@@ -39,7 +39,7 @@ For complete and accurate results, the tool should be run with **administrator p
 - Analysis of access permissions (read / write / full control)  
 - Identification of overly permissive or exposed shares  
 - Mapping of shared resources across the system  
-- Helps detect potential data exposure and unauthorized access risks
+- Helps detect potential data exposure and unauthorized access risks  
 
 ---
 
@@ -93,7 +93,7 @@ For complete and accurate results, the tool should be run with **administrator p
 ### 👥 User & Domain Settings
 - Audit of local user accounts, groups, and assigned roles  
 - Detection of privileged and administrative accounts  
-- Identification of Workgroup, On-Premises Active Directory, Azure AD, and Hybrid domain environments  
+- Identification of Workgroup, Active Directory, Azure AD, and Hybrid domain environments  
 - LAPS (Local Administrator Password Solution) status and activity  
 - NTLM authentication policy and enforcement configuration analysis  
 
