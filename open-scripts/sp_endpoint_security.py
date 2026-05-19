@@ -657,7 +657,7 @@ def get_security_settings():
                 file_path = os.path.join(root, file)
                 try:
                     attrs = ctypes.windll.kernel32.GetFileAttributesW(file_path)
-                    if attrs & 0x4000:  # FILE_ATTRIBUTE_ENCRYPTED
+                    if attrs & 0x4000:
                         efs_found = True
                         break
                 except Exception:
@@ -677,10 +677,8 @@ def format_security_settings(settings):
     for i, key in enumerate(keys):
         value = settings[key]
 
-        # Section header
         report.append(f"{key}:")
 
-        # Handle lists (e.g., Defender, Endpoint Protection)
         if isinstance(value, list):
             if not value:
                 report.append("  (None)")
@@ -690,7 +688,6 @@ def format_security_settings(settings):
         else:
             report.append(f"  {value}")
 
-        # Add separator only if not last section
         if i != len(keys) - 1:
             report.append("–" * 40)
 
@@ -698,8 +695,8 @@ def format_security_settings(settings):
 
 # --- Output ---
 if __name__ == "__main__":
-    print("Security Settings Report")
-    print("–" * len("Security Settings Report"))
+    print("Endpoint Security Report")
+    print("–" * len("Endpoint Security Report"))
 
     if running_in_idle():
         print("Working... (please wait)")
