@@ -16,6 +16,7 @@ These tools are intended solely for lawful and authorized use. You must obtain e
 
 - [sp_check_network.py](sp_check_network.py) – Checks internet connectivity, ISP, geolocation and VPN status
 - [sp_credential_integrity.py](sp_credential_integrity.py) – Audits Windows credential protection mechanisms
+- [sp_endpoint_security.py](sp_endpoint_security.py) – Reviews core Windows endpoint security posture settings
 - [sp_domain_settings.py](sp_domain_settings.py) – Identifies domain affiliation and discovers related settings
 - [sp_gateway_detection.py](sp_gateway_detection.py) – Detects the local network's default gateway and public IP
 - [sp_hash_checksum.py](sp_hash_checksum.py) – Calculates cryptographic file hashes for integrity verification
@@ -26,7 +27,6 @@ These tools are intended solely for lawful and authorized use. You must obtain e
 - [sp_remote_access.py](sp_remote_access.py) – Detects remote access capabilities and services exposure
 - [sp_remote_server.py](sp_remote_server.py) – Inspects the system for server side remote features
 - [sp_security_events.py](sp_security_events.py) – Outputs recent Windows security event log entries (requires admin permissions)
-- [sp_security_settings.py](sp_security_settings.py) – Reviews core Windows security posture settings
 - [sp_shared_folders.py](sp_shared_folders.py) – Mapping shared folders on the device (requires admin permissions)
 - [sp_system_settings.py](sp_system_settings.py) – Presents a detailed report of the system's settings and inventory
 - [sp_workflow_example.py](sp_workflow_example.py) – An example module demonstrating audit workflow and logging 
