@@ -1,7 +1,7 @@
 # MIT License – Copyright (c) 2025 Menahem Levinski
 
 """
-Reviews core Windows security posture settings.
+Reviews core Windows endpoint security posture settings.
 
 Third-party: psutil
 """
@@ -233,15 +233,15 @@ def get_security_settings():
         "Windows Defender": [],
         "Endpoint Protection": [],
         "Host-based Firewall": "Unknown",
-        "Defender ASR Rules": "Unknown",
-        "Encrypted File System": "Unknown",
+        "Auto Screen Lock": "Unknown",
         "Office Macro Policy": "Unknown",
-        "PATH Variables": "Unknown",
+        "Defender ASR Rules": "Unknown",
         "UAC Elevation": "Unknown",
         "Core Isolation": "Unknown",
         "PowerShell Scripts": "Unknown",
-        "BitLocker": "Unknown",
-        "Secure Boot": "Unknown",
+        "Encrypted File System": "Unknown",
+        "BitLocker Drive Encryption": "Unknown",
+        "UEFI Secure Boot": "Unknown",
         "Removable Storage": "Unknown",
         "USB AutoRun": "Unknown",
         "System Restore": "Unknown",
@@ -304,7 +304,7 @@ def get_security_settings():
         if all(profiles.values()):
             status = "On"
         elif any(profiles.values()):
-            status = "Partially On"
+            status = "Partially"
         else:
             status = "Off"
 
@@ -313,7 +313,97 @@ def get_security_settings():
     except Exception:
         result["Host-based Firewall"] = "Unknown"
 
-    # --- ASR ---
+    # --- Auto Screen Lock (Windows 10/11) ---
+    try:
+        inactivity = None
+        screen_lock = False
+        lock_on_sleep = False
+
+        # 1. Modern inactivity policy
+        try:
+            with winreg.OpenKey(
+                winreg.HKEY_LOCAL_MACHINE,
+                r"Software\Microsoft\Windows\CurrentVersion\Policies\System"
+            ) as key:
+
+                # Inactivity timeout policy
+                try:
+                    inactivity, _ = winreg.QueryValueEx(
+                        key,
+                        "InactivityTimeoutSecs"
+                    )
+
+                    inactivity = int(inactivity)
+
+                except FileNotFoundError:
+                    inactivity = None
+
+                # Lock on sleep policy
+                try:
+                    val, _ = winreg.QueryValueEx(
+                        key,
+                        "DisableLockWorkstation"
+                    )
+
+                    lock_on_sleep = (val != 1)
+
+                except FileNotFoundError:
+                    lock_on_sleep = True
+
+        except Exception:
+            pass
+
+        # 2. Secure screen saver lock
+        try:
+            with winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER,
+                r"Control Panel\Desktop"
+            ) as key:
+
+                try:
+                    secure, _ = winreg.QueryValueEx(
+                        key,
+                        "ScreenSaverIsSecure"
+                    )
+
+                    screen_lock = (secure == "1")
+
+                except FileNotFoundError:
+                    screen_lock = False
+
+        except Exception:
+            pass
+
+        # 3. Human-readable verdict
+        if inactivity:
+
+            mins = round(inactivity / 60)
+
+            result["Auto Screen Lock"] = (
+                f"Enforced ({mins}min inactivity timeout)"
+            )
+
+        elif lock_on_sleep:
+
+            if screen_lock:
+                result["Auto Screen Lock"] = (
+                    "Default (Sleep lock + secure screen lock)"
+                )
+            else:
+                result["Auto Screen Lock"] = (
+                    "Default (Sleep lock enabled)"
+                )
+
+        else:
+
+            result["Auto Screen Lock"] = (
+                "Disabled (No policy enforced)"
+            )
+
+    except Exception:
+        result["Auto Screen Lock"] = "Unknown"
+            
+    # --- Defender ASR Rules ---
     try:
         path = r"SOFTWARE\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR"
 
@@ -339,10 +429,24 @@ def get_security_settings():
 
         if not rules:
             result["Defender ASR Rules"] = "Not Configured"
+
         else:
             enabled = sum(1 for v in rules.values() if v == 1)
             audit = sum(1 for v in rules.values() if v == 2)
             disabled = sum(1 for v in rules.values() if v == 0)
+
+            # ADD THIS (IMPORTANT FIX)
+            if enabled > audit:
+                state = "Block"
+            elif audit > enabled:
+                state = "Audit"
+            elif enabled == 0:
+                state = "Disabled"
+            else:
+                state = "Mixed"
+
+            # store BOTH:
+            infosec["Defender ASR Rules"] = state
 
             result["Defender ASR Rules"] = (
                 f"Configured ({len(rules)} rules) | "
@@ -351,6 +455,7 @@ def get_security_settings():
 
     except Exception:
         result["Defender ASR Rules"] = "Unknown"
+        infosec["Defender ASR Rules"] = "Unknown"
     
     # --- UAC ---
     try:
@@ -409,24 +514,6 @@ def get_security_settings():
     except Exception as e:
         result["Core Isolation"] = f"Error: {e}"
 
-    # --- PATH Variables ---
-    try:
-        path = os.environ.get("PATH", "")
-        path_dirs = path.split(os.pathsep)
-        
-        result["PATH Variables"] = "Default"  # default
-        for p in path_dirs:
-            p = p.strip()
-            if not p:
-                continue
-            # Flag non-existent directories or Downloads folders in PATH
-            if not os.path.exists(p) or ("downloads" in p.lower() and "users" in p.lower()):
-                result["PATH Variables"] = "Suspicious"
-                break  # stop after first suspicious entry
-
-    except Exception:
-        result["PATH Variables"] = "Unknown"
-
     # --- Macro Security ---
     try:
         def read_reg(root, path, name):
@@ -475,7 +562,7 @@ def get_security_settings():
 
     except Exception:
         result["Office Macro Policy"] = "Unknown"
-
+        
     # --- PowerShell Scripts ---
     try:
         cmd = 'powershell -NoProfile -Command "Get-ExecutionPolicy"'
@@ -492,13 +579,13 @@ def get_security_settings():
         result["PowerShell Scripts"] = "Unknown"
 
     # --- BitLocker ---
-    result["BitLocker"] = check_bitlocker()
+    result["BitLocker Drive Encryption"] = check_bitlocker()
 
     # --- System Restore ---
     result["System Restore"] = check_system_restore()
 
-    # --- Secure Boot ---
-    result["Secure Boot"] = check_secure_boot()
+    # --- UEFI Secure Boot ---
+    result["UEFI Secure Boot"] = check_secure_boot()
 
     # --- Removable Storage ---
     try:
@@ -562,7 +649,7 @@ def get_security_settings():
     except Exception:
         result["USB AutoRun"] = "Unknown"
 
-    # --- EFS Usage ---
+    # --- Encrypted File System ---
     try:
         efs_found = False
         for root, dirs, files in os.walk(os.path.expanduser("~")):
