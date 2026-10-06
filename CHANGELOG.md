@@ -3,7 +3,16 @@ All notable changes to **Secuditor Lite** are documented in this file.
 
 ---
 
-## [2.2.9] – 2026-09-10 Latest
+## [2.3.0] – 2026-10-07 Latest
+- Added the Traffic Flow module as a new toolbar button
+- Improved the Windows Events and Security Events summary modules
+- Removed the TLS Security scanning module
+- UI visual improvements and performance optimizations
+- Minor bug fixes and security updates
+
+---
+
+## [2.2.9] – 2026-09-10
 - Added the TLS Security module as a new toolbar button
 - Added Credential Manager store count to the Credential Integrity node
 - Improved the Suspicious Activity scanner with new DLL/Module anomaly detection capability
