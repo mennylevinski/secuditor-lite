@@ -1,4 +1,4 @@
-# Secuditor Lite 2.2.9 – Security Checks & Diagnostics
+# Secuditor Lite 2.3.0 – Security Checks & Diagnostics
 
 This file lists the structured and comprehensive security audit elements that **Secuditor Lite** checks on Windows systems, helping identify misconfigurations, vulnerabilities, and potential risks across **endpoint, network, and operational security layers**.
 
@@ -49,10 +49,12 @@ For complete and accurate results, the tool should be run with **administrator p
 
 ---
 
-### 🔍 LAN Scanning (via toolbar button)
+### 🔍 LAN Scanning and Traffic Flow (via toolbar buttons)
 - IPv4-based local network device discovery  
 - Vendor identification via MAC address OUI  
-- Detection of common open ports and exposed network services  
+- Detection of common open ports and exposed network services
+- Network traffic flow analysis by process, port, protocol, and direction
+- Identification of active connections and potentially unusual network activity
 
 ---
 
@@ -132,9 +134,7 @@ For complete and accurate results, the tool should be run with **administrator p
 
 ---
 
-### 🔐 SSL/TLS Security Modules
-- Certificate validation (hostname, self-signed, expiration) and issuer analysis
-- Verification of certificate chains and fingerprints  
+### 🔐 SSL Interception Module
 - Key type and strength (RSA/ECDSA) evaluated against minimum security thresholds  
 - Detection of SSL/TLS interception and potential man-in-the-middle  
 - Supported TLS version detection, including deprecated Ciphers
