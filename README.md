@@ -37,7 +37,7 @@ Our **[privacy](PRIVACY.md)** and **[security](SECURITY.md)** policies are are d
 
 - Quick and comprehensive endpoint security evaluation
 - Built-in Windows and network discovery auditing tools
-- Advanced SSL/TLS security modules with detailed analysis
+- Practical SSL interception and traffic flow analysis modules
 - Enhanced configuration checks and diagnostic summary
 - Structured and easy to export plain text (TXT) reports
 - More analytical capabilities with improved security insights
@@ -128,7 +128,7 @@ Our **[privacy](PRIVACY.md)** and **[security](SECURITY.md)** policies are are d
 - Internet download speed measurement
 - NAT public IP and geolocation detection
 - LAN Discovery module
-- TLS Security module
+- Traffic Flow module
 - Security Audit
 - Export summary report
 - Info and contact us
