@@ -125,13 +125,13 @@ Our **[privacy](PRIVACY.md)** and **[security](SECURITY.md)** policies are are d
 - Keyboard arrow keys for navigating the categories table
 
 ### 4️⃣ Toolbar buttons (right to left):
-- Internet download speed measurement
-- NAT public IP and geolocation detection
+- Internet speedtest
+- NAT public IP
 - LAN Discovery module
 - Traffic Flow module
 - Security Audit
-- Export summary report
-- Info and contact us
+- Export report
+- About
 - Menu
 
 ---
