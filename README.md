@@ -79,10 +79,10 @@ Our **[privacy](PRIVACY.md)** and **[security](SECURITY.md)** policies are are d
 
 ## Presentation (Windows 11)
 
-*Secuditor Lite application demo*
+*Secuditor Lite summary report*
 <p align="center">
   <a>
-    <img src="media/animated-gif-secuditor-fast.gif" alt="Secuditor Lite demo" />
+    <img src="media/secuditor-summary-report.png" alt="Secuditor Lite summary report" />
   </a>
 </p>
 
