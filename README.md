@@ -100,7 +100,7 @@ Our **[privacy](PRIVACY.md)** and **[security](SECURITY.md)** policies are are d
 *Secuditor Traffic Flow module*
 <p align="center">
   <a>
-    <img src="media/secuditor-traffic-flow-prod.png" alt="Secuditor TLS Security module" />
+    <img src="media/secuditor-traffic-flow-prod.png" alt="Secuditor Traffic Flow module" />
   </a>
 </p>
 
