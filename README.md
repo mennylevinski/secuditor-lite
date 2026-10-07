@@ -95,14 +95,14 @@ Our **[privacy](PRIVACY.md)** and **[security](SECURITY.md)** policies are are d
   </a>
 </p>
 
+<br>
+
 *Secuditor LAN Discovery module*
 <p align="center">
   <a>
     <img src="media/secuditor-lan-discovery-prod.png" alt="Secuditor LAN Discovery module" />
   </a>
 </p>
-
-<br>
 
 ---
 <br>
