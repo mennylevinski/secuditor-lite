@@ -88,6 +88,13 @@ Our **[privacy](PRIVACY.md)** and **[security](SECURITY.md)** policies are are d
 
 <br>
 
+*Secuditor Traffic Flow module*
+<p align="center">
+  <a>
+    <img src="media/secuditor-traffic-flow-prod.png" alt="Secuditor Traffic Flow module" />
+  </a>
+</p>
+
 *Secuditor LAN Discovery module*
 <p align="center">
   <a>
@@ -96,13 +103,6 @@ Our **[privacy](PRIVACY.md)** and **[security](SECURITY.md)** policies are are d
 </p>
 
 <br>
-
-*Secuditor Traffic Flow module*
-<p align="center">
-  <a>
-    <img src="media/secuditor-traffic-flow-prod.png" alt="Secuditor Traffic Flow module" />
-  </a>
-</p>
 
 ---
 <br>
