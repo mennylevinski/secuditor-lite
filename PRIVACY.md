@@ -17,9 +17,10 @@ The application may periodically communicate with our secure servers to:
 - Support application version and integrity checks.
 - Retrieve updated security resources, including detection methods and application reputation databases.
 
-These connections do not transmit personal information or system information collected during security audits. 
-They are limited to the technical information required for these services, such as version identifiers or checksum values. 
-As with any Internet connection, our servers may also receive the public IP address associated with your connection.
+These communications are limited to the technical information required for the relevant services. Depending on the request, this may include application version identifiers, checksum values, and request metadata. Secuditor's servers may also receive the public IP address associated with your connection.
 
-Third-party online checks, such as public IP lookups, NAT checks, TLS/SSL security checks, external connection analysis, and other online diagnostic checks, may be performed automatically as part of a security audit or when explicitly initiated by you.
-These checks may involve connecting to third-party servers, which may receive your public IP address and other technical information normally transmitted as part of an Internet connection.
+## Third-Party Online Checks
+
+Certain diagnostic features may automatically connect to third-party services when you run a security audit or the relevant diagnostic check, while other online checks may be initiated explicitly by you. These services may include public IP lookup, NAT detection, TLS/SSL inspection, and external connection analysis.
+
+When these checks are performed, the relevant third-party services may receive your public IP address and other technical information normally transmitted as part of an Internet connection. The information received depends on the service contacted and the specific check performed. Secuditor does not control the privacy practices or data-handling policies of third-party service providers.
