@@ -3,7 +3,14 @@ All notable changes to **Secuditor Lite** are documented in this file.
 
 ---
 
-## [2.3.0] – 2026-10-07 Latest
+## [2.3.1] – 2026-10-15 Latest
+- Added executable memory detection to the Suspicious Activity module 
+- Improved incoming connection detection in the Traffic Flow module
+- Minor bug fixes and security updates
+
+---
+
+## [2.3.0] – 2026-10-07
 - Added the Traffic Flow module as a new toolbar button
 - Improved the Windows Events and Security Events summary modules
 - Removed the TLS Security scanning module
