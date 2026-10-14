@@ -139,12 +139,6 @@ class LanScan:
             except Exception:
                 pass
 
-    # --- String limitation ---
-    def _limit_str(self, s: Optional[str], max_len: int = 23) -> Optional[str]:
-        if not s:
-            return s
-        return s if len(s) <= max_len else s[:max_len - 3] + "..."
-
     # ======= Noise filter helper =======
     NOISE_PORTS = {
         5353,   # mDNS
