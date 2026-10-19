@@ -41,7 +41,7 @@ This Agreement constitutes the entire agreement between User and Licensor regard
 
 10. Third-Party Software
 This Software includes third-party open-source components and icons that are licensed separately. 
-Your use of those components is subject to their respective licenses. Copies of these licenses are provided in the THIRD_PARTY_LICENSES.txt file included with the Software.
+Your use of those components is subject to their respective licenses. Links to these licenses are provided in the THIRD_PARTY_LICENSES.txt file included with the repository.
 
 Third-party components included:
 - Python (Python Software Foundation License)
