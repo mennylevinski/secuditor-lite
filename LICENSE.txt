@@ -30,16 +30,10 @@ The Software is provided strictly for lawful and ethical purposes. Users are res
 6. Limitation of Liability
 In no event shall Licensor be liable for any damages (including, but not limited to, loss of data, loss of profits, or business interruption) arising from the use or inability to use the Software, even if Licensor has been advised of the possibility of such damages.
 
-7. Termination
-This Agreement is effective until terminated. Licensor may terminate it at any time if User fails to comply with its terms. Upon termination, User must cease using the Software and destroy all copies.
-
-8. Governing Law
+7. Governing Law
 This Agreement shall be governed by and construed in accordance with the laws of the Country in which the Licensor resides.
 
-9. Entire Agreement
-This Agreement constitutes the entire agreement between User and Licensor regarding the Software and supersedes any prior agreements or understandings.
-
-10. Third-Party Software
+8. Third-Party Software
 This Software includes third-party open-source components and icons that are licensed separately. 
 Your use of those components is subject to their respective licenses. Links to these licenses are provided in the THIRD_PARTY_LICENSES.txt file included with the repository.
 
