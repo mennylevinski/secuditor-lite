@@ -46,3 +46,4 @@ Third-party components included:
 - cryptography (Apache License 2.0 / BSD)
 - Tcl/Tk via Tkinter (BSD-style License)
 - Freepik (UI Buttons) icons by @user915206 (Freepik Free License)
+- MACLookup vendor database (CSV format) used for vendor identification
