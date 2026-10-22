@@ -13,27 +13,143 @@ import winreg
 import psutil
 import json
 
+# --- Get Windows Edition ---
+def _get_windows_edition():
+    try:
+        key_path = r"SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+
+        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, key_path) as key:
+            edition, _ = winreg.QueryValueEx(key, "EditionID")
+            product, _ = winreg.QueryValueEx(key, "ProductName")
+            build, _ = winreg.QueryValueEx(key, "CurrentBuildNumber")
+
+        edition_names = {
+            "Core": "Home",
+            "CoreSingleLanguage": "Home Single Language",
+            "CoreCountrySpecific": "Home Country Specific",
+            "Professional": "Pro",
+            "ProfessionalN": "Pro N",
+            "ProfessionalWorkstation": "Pro for Workstations",
+            "ProfessionalWorkstationN": "Pro for Workstations N",
+            "ProfessionalEducation": "Pro Education",
+            "ProfessionalEducationN": "Pro Education N",
+            "Enterprise": "Enterprise",
+            "EnterpriseN": "Enterprise N",
+            "Education": "Education",
+            "EducationN": "Education N",
+            "ServerStandard": "Standard",
+            "ServerDatacenter": "Datacenter",
+            "ServerEssentials": "Essentials",
+            "ServerStandardCore": "Standard Core",
+            "ServerDatacenterCore": "Datacenter Core",
+        }
+
+        edition_name = edition_names.get(edition, edition)
+
+        if "server" in product.casefold():
+            return product
+
+        os_name = "Windows 11" if int(build) >= 22000 else "Windows 10"
+
+        return f"{os_name} {edition_name}"
+
+    except (OSError, ValueError, TypeError):
+        return "Unknown"
+
+def _get_cim_value(class_name, property_name):
+    try:
+        result = subprocess.run(
+            [
+                "powershell.exe",
+                "-NoProfile",
+                "-NonInteractive",
+                "-Command",
+                f"(Get-CimInstance -ClassName {class_name}).{property_name}",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+        )
+        value = result.stdout.strip()
+        return value if result.returncode == 0 and value else "Unknown"
+    except (OSError, subprocess.TimeoutExpired):
+        return "Unknown"
+
+def _get_firmware_type():
+    try:
+        import ctypes
+
+        class FIRMWARE_TYPE(ctypes.c_int):
+            pass
+
+        firmware_type = FIRMWARE_TYPE()
+
+        get_firmware_type = ctypes.windll.kernel32.GetFirmwareType
+        get_firmware_type.argtypes = [ctypes.POINTER(FIRMWARE_TYPE)]
+        get_firmware_type.restype = ctypes.c_bool
+
+        if get_firmware_type(ctypes.byref(firmware_type)):
+            return {
+                1: "BIOS",
+                2: "UEFI",
+            }.get(firmware_type.value, "Unknown")
+
+        return "Unknown"
+
+    except (AttributeError, OSError):
+        return "Unknown"
+
+def _get_bios_info():
+    return _get_cim_value("Win32_BIOS", "SMBIOSBIOSVersion")
+
 # --- Collect basic OS and Resources info using platform module ---
 def get_system_settings():
     os_name = platform.system()
     os_release = platform.release()
-    unified_os = f"{os_name}{os_release}"
+    windows_edition = _get_windows_edition()
+
+    unified_os = (
+        windows_edition
+        if os_name == "Windows" and windows_edition != "Unknown"
+        else f"{os_name}{os_release}"
+    )
+            
+    firmware_type = _get_firmware_type()
+    bios_version = _get_bios_info()
+
+    firmware_version = (
+        f"{firmware_type} {bios_version.split(' - ')[-1]}"
+        if firmware_type != "Unknown" and bios_version != "Unknown"
+        else bios_version
+    )
 
     # --- Gather resources info ---
+    memory = psutil.virtual_memory()
+    cpu_freq = psutil.cpu_freq()
+    boot_time = psutil.boot_time()
+
     resources = {
         "Machine": platform.machine(),
-        "Processor": platform.processor(),
-        "Architecture": "x64" if platform.architecture()[0] == "64bit" else "x86",
+        "Processor": platform.processor() or "Unknown",
+        "Architecture": (
+            "x64" if platform.architecture()[0] == "64bit" else "x86"
+        ),
         "CPU Cores": psutil.cpu_count(logical=False),
         "Threads": psutil.cpu_count(logical=True),
-        "RAM (GB)": round(psutil.virtual_memory().total / (1024**3), 2),
+        "CPU Frequency (MHz)": (
+            round(cpu_freq.current) if cpu_freq else "Unknown"
+        ),
+        "RAM (GB)": round(memory.total / (1024**3), 2),
     }
 
     # --- Gather disks info safely ---
     disks = {}
+
     for part in psutil.disk_partitions(all=False):
         try:
             usage = psutil.disk_usage(part.mountpoint)
+
             disks[part.device] = {
                 "Mountpoint": part.mountpoint,
                 "File System": part.fstype,
@@ -42,16 +158,17 @@ def get_system_settings():
                 "Free (GB)": round(usage.free / (1024**3), 2),
                 "Usage %": usage.percent,
             }
-        except (PermissionError, FileNotFoundError):
-            # Skip drives that are not ready
+
+        except (PermissionError, FileNotFoundError, OSError):
+            # Skip drives that are not ready or accessible
             continue
 
     return {
         "Hostname": socket.gethostname(),
         "OS": unified_os,
-        "Version": platform.version(),
+        "Firmware": firmware_version,
         "Resources": resources,
-        "Disks": disks
+        "Disks": disks,
     }
 
 def format_system_settings(settings):
@@ -65,12 +182,12 @@ def format_system_settings(settings):
             # Add section header (special handling for Resources and Disks)
             if key == "Resources":
                 # Standard Resources section
-                output.append("–" * 40)
+                output.append("–" * 50)
                 output.append(f"{key}:")
                 output.append("")
             elif key == "Disks":
                 # Always add a separator before Disks (even if after Resources)
-                output.append("–" * 40)
+                output.append("–" * 50)
                 output.append(f"{key}:")
                 output.append("")
             else:
@@ -84,19 +201,19 @@ def format_system_settings(settings):
                         output.append(f"  {k}: {v}")
                     # Separator between disks (except last)
                     if key == "Disks" and j != len(sub_keys) - 1:
-                        output.append("–" * 40)
+                        output.append("–" * 50)
                 else:
                     output.append(f"{sub_key}: {sub_value}")
 
             # Section separator for non-Disk/Resource sections (except last)
             if key not in ("Disks", "Resources") and i != len(keys) - 1:
-                output.append("–" * 40)
+                output.append("–" * 50)
 
         else:
             output.append(f"{key}: {value}")
             # Add separator if not last and next isn’t Resources/Disks
             if i != len(keys) - 1 and keys[i + 1] not in ("Resources", "Disks"):
-                output.append("–" * 40)
+                output.append("–" * 50)
 
     return "\n".join(output)
 
@@ -229,7 +346,8 @@ def get_hardware_report():
         "Network Adapters": scan_network_adapters() or [],
     }
 
-    lines = [""]
+    lines = []
+    lines.append("–" * 50)
 
     category_keys = list(categories.keys())
     for i, category in enumerate(category_keys):

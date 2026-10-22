@@ -239,6 +239,8 @@ def get_security_settings():
         "UAC Elevation": "Unknown",
         "Core Isolation": "Unknown",
         "PowerShell Scripts": "Unknown",
+        "Anonymous Access": "Unknown",
+        "Data Execution Prevention": "Unknown",
         "Encrypted File System": "Unknown",
         "BitLocker Drive Encryption": "Unknown",
         "UEFI Secure Boot": "Unknown",
@@ -251,7 +253,8 @@ def get_security_settings():
     try:
         output = subprocess.check_output(
             'powershell -Command "Get-MpComputerStatus | Select-Object -ExpandProperty AMServiceEnabled"',
-            shell=True, text=True, errors="ignore"
+            shell=True, text=True, errors="ignore",
+            creationflags=subprocess.CREATE_NO_WINDOW
         ).strip()
         defender_active = output.lower() == "true"
         result["Windows Defender"].append(f"Windows Defender ({'Active' if defender_active else 'Inactive'})")
@@ -312,6 +315,35 @@ def get_security_settings():
 
     except Exception:
         result["Host-based Firewall"] = "Unknown"
+
+    # --- Data Execution Prevention (DEP) ---
+    try:
+        dep_result = subprocess.run(
+            [
+                "powershell",
+                "-Command",
+                "(Get-CimInstance Win32_OperatingSystem).DataExecutionPrevention_SupportPolicy"
+            ],
+            capture_output=True,
+            text=True,
+            timeout=10
+        )
+
+        dep_policy = dep_result.stdout.strip()
+
+        if dep_policy == "0":
+            result["Data Execution Prevention"] = "Disabled"
+        elif dep_policy == "1":
+            result["Data Execution Prevention"] = "Enabled (Always On)"
+        elif dep_policy == "2":
+            result["Data Execution Prevention"] = "Enabled (Opt In)"
+        elif dep_policy == "3":
+            result["Data Execution Prevention"] = "Enabled (Opt Out)"
+        else:
+            result["Data Execution Prevention"] = "Unknown"
+
+    except Exception:
+        result["Data Execution Prevention"] = "Unknown"
 
     # --- Auto Screen Lock (Windows 10/11) ---
     try:
@@ -402,6 +434,62 @@ def get_security_settings():
 
     except Exception:
         result["Auto Screen Lock"] = "Unknown"
+
+    # --- Anonymous Access ---
+    try:
+        registry_checks = [
+            (
+                r"SYSTEM\CurrentControlSet\Control\Lsa",
+                "RestrictAnonymous (Legacy default)",
+                lambda value: value == 0
+            ),
+            (
+                r"SYSTEM\CurrentControlSet\Control\Lsa",
+                "RestrictAnonymousSAM (Anonymous SAM enumeration – Exposed)",
+                lambda value: value == 0
+            ),
+            (
+                r"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters",
+                "RestrictNullSessAccess (Null-session access – Exposed)",
+                lambda value: value == 0
+            )
+        ]
+
+        findings = []
+        all_restricted = True
+
+        for key_path, setting, is_finding in registry_checks:
+            value_name, remark = setting.split(" (", 1)
+            remark = remark.rstrip(")")
+
+            try:
+                with winreg.OpenKey(
+                    winreg.HKEY_LOCAL_MACHINE,
+                    key_path
+                ) as key:
+                    value, _ = winreg.QueryValueEx(key, value_name)
+
+                value = int(value)
+
+                if is_finding(value):
+                    all_restricted = False
+                    findings.append((value_name, value, remark))
+
+            except FileNotFoundError:
+                all_restricted = False
+
+        if all_restricted:
+            result["Anonymous Access"] = "Restricted"
+        elif findings:
+            result["Anonymous Access"] = "\n".join(
+                f"{name} = {value}: {remark}"
+                for name, value, remark in findings
+            )
+        else:
+            result["Anonymous Access"] = "Unknown (Policy Values Missing)"
+
+    except Exception:
+        result["Anonymous Access"] = "Unknown"
             
     # --- Defender ASR Rules ---
     try:
@@ -469,8 +557,8 @@ def get_security_settings():
                     uac_levels = {
                         0: "Do not Prompt",
                         1: "Elevate without prompting",
-                        2: "Prompt for credentials on secure desktop",
-                        3: "Prompt for consent on secure desktop",
+                        2: "Prompt for credentials",
+                        3: "Prompt for consent",
                         4: "Prompt for credentials",
                         5: "Prompt for consent"
                     }
@@ -544,13 +632,13 @@ def get_security_settings():
             # None = not configured (defaults apply)
 
             if macro_value is None:
-                macro_status = "Default (System Controlled)"
+                macro_status = "Default (System controlled)"
             elif macro_value == 4:
-                macro_status = "Disabled (No Macros)"
+                macro_status = "Disabled (No macros)"
             elif macro_value == 3:
-                macro_status = "Disabled with Notification"
+                macro_status = "Disabled (With notification)"
             elif macro_value == 2:
-                macro_status = "Enabled (Unsafe)"
+                macro_status = "Enabled (Unsafe macros)"
             else:
                 macro_status = f"Unknown ({macro_value})"
 
@@ -657,7 +745,7 @@ def get_security_settings():
                 file_path = os.path.join(root, file)
                 try:
                     attrs = ctypes.windll.kernel32.GetFileAttributesW(file_path)
-                    if attrs & 0x4000:
+                    if attrs & 0x4000:  # FILE_ATTRIBUTE_ENCRYPTED
                         efs_found = True
                         break
                 except Exception:
