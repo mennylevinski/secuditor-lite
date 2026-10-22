@@ -122,7 +122,10 @@ def mock_check(logger: ConsoleLogger, name: str):
 
 def mock_assemble_report(logger: ConsoleLogger):
     """Simulate assembling a report"""
-    logger.log("\nAssembling final report...")
+
+    logger.log("")
+    logger.log("Assembling final report...")
+    logger.log("")
     time.sleep(1)
 
 # --- GUI ---
@@ -140,7 +143,7 @@ class WorkflowGUI(tk.Tk):
         # Buttons
         btn_frame = tk.Frame(self)
         btn_frame.pack(pady=5)
-        tk.Button(btn_frame, text="Run Full Audit", command=self.run_all_audit).pack(side="left", padx=5)
+        tk.Button(btn_frame, text="Run Live Audit", command=self.run_all_audit).pack(side="left", padx=5)
         tk.Button(btn_frame, text="Save Log File ", command=self.logger.save_to_file).pack(side="left", padx=5)
 
     def run_all_audit(self):
@@ -150,7 +153,8 @@ class WorkflowGUI(tk.Tk):
         self.console.config(state="disabled")
         self.logger._log_buffer = io.StringIO()  # reset the log buffer
 
-        self.logger.log("\nStarting workflow example...")
+        self.logger.log("Starting workflow example...")
+        self.logger.log("")
 
         # --- Disable buttons while audit runs ---
         for child in self.children.values():

@@ -19,11 +19,10 @@ These tools are intended solely for lawful and authorized use. You must obtain e
 - [sp_endpoint_security.py](sp_endpoint_security.py) – Reviews core Windows endpoint security posture settings
 - [sp_hash_checksum.py](sp_hash_checksum.py) – Calculates cryptographic file hashes for integrity verification
 - [sp_installed_apps.py](sp_installed_apps.py) – Outputs a list of applications installed on the device
-- [sp_lan_discovery.py](sp_lan_discovery.py) – LAN discovery, open port auditing, and local network device detection.
 - [sp_network_settings.py](sp_network_settings.py) – Presents the device's network adapters and configurations
 - [sp_password_policy.py](sp_password_policy.py) – Evaluates local and domain affiliated password policies
 - [sp_remote_access.py](sp_remote_access.py) – Detects remote access capabilities and services exposure
-- [sp_remote_server.py](sp_remote_server.py) – Inspects the system for server side remote features
+- [sp_remote_features.py](sp_remote_features.py) – Inspects the system for server side remote features
 - [sp_security_events.py](sp_security_events.py) – Outputs recent Windows security event log entries (requires admin permissions)
 - [sp_shared_folders.py](sp_shared_folders.py) – Mapping shared folders on the device (requires admin permissions)
 - [sp_system_settings.py](sp_system_settings.py) – Presents a detailed report of the system's settings and inventory

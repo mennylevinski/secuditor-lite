@@ -184,22 +184,46 @@ def winrm_verdict(service, listeners, ports, risk):
     if risk in ("High", "Critical"):
         return "Enabled, remote access exposed, high risk"
 
-    return "Enabled, exposure unknown, unknown risk"
+    return "Enabled, exposure unknown"
+
+def winrm_verdict(service, listeners, ports, risk):
+    status = service.get("status", "Unknown").lower()
+
+    if status != "enabled":
+        return "Disabled"
+
+    if not listeners.get("http") and not listeners.get("https"):
+        return "Enabled, Low Risk (No listeners)"
+
+    if not ports:
+        return "Enabled, Low Risk (No ports listeners)"
+
+    if risk == "Low":
+        return "Enabled, Moderate Risk (Restricted exposure)"
+
+    if risk == "Medium":
+        return "Enabled, Moderate Risk (Network exposure)"
+
+    if risk in ("High", "Critical"):
+        return "Enabled, High Risk (Remote access exposed)"
+
+    return "Enabled, Unknown Risk (Exposure unknown)"
 
 # --- Remote Access Settings ---
 def get_remote_access_settings():
     
     result = {
         "Remote Desktop": "Unknown",
+        "Remote Registry": "Unknown",
         "Remote Assistance": "Unknown",
         "PowerShell Remoting": "Unknown",
-        "COM Network Service": "Unknown",        
         "RPC Print Spooler": "Unknown",
         "Rsync Service": "Unknown",
         "Telnet Service": "Unknown",
         "Bluetooth": "Unknown",
         "NetBIOS": "Unknown",
         "UPnPHost": "Unknown",
+        "DCOM": "Unknown",
         "WinRM": "Unknown",
         "SMB1": "Unknown",
         "SMB2": "Unknown",
@@ -224,7 +248,7 @@ def get_remote_access_settings():
 
                             # Assess security
                             if nla == 1 and min_encryption >= 2:  # 2 or higher = moderate/strong
-                                verdict = "Enabled, Low Risk"
+                                verdict = "Enabled, Low Risk (Default settings)"
                             else:
                                 verdict = "Enabled, Potentially Dangerous (Without NLA or using weak encryption)"
                     except FileNotFoundError:
@@ -248,11 +272,11 @@ def get_remote_access_settings():
             '"Get-WindowsOptionalFeature -Online -FeatureName SMB1Protocol | '
             'Select-Object -ExpandProperty State"'
         )
-        output = subprocess.check_output(cmd, shell=True, text=True, encoding="utf-8").strip()
+        output = subprocess.check_output(cmd, shell=True, text=True, encoding="utf-8", creationflags=subprocess.CREATE_NO_WINDOW).strip()
 
         # --- Final verdict ---
         if output == "Enabled":
-            verdict = "Enabled, Potentially Dangerous"  # SMB1 enabled → insecure
+            verdict = "Enabled, High Risk"  # SMB1 enabled → insecure
         elif output == "Disabled":
             verdict = "Disabled"  # Safe
         else:
@@ -277,7 +301,7 @@ def get_remote_access_settings():
             'Select-Object EnableSMB2Protocol, RequireSecuritySignature, EncryptData, EnableGuestAccess, EnableSMB1Protocol, AuditSmbAccess | '
             'ConvertTo-Json"'
         )
-        output = subprocess.check_output(cmd, shell=True, text=True, encoding="utf-8").strip()
+        output = subprocess.check_output(cmd, shell=True, text=True, encoding="utf-8", creationflags=subprocess.CREATE_NO_WINDOW).strip()
         data = json.loads(output)
 
         enable_smb2 = data.get("EnableSMB2Protocol", False)
@@ -307,7 +331,7 @@ def get_remote_access_settings():
                     '"Get-SmbShare | '
                     'Select-Object Name, Path, FullAccess, ChangeAccess, ReadAccess | ConvertTo-Json"'
                 )
-                shares_output = subprocess.check_output(cmd_shares, shell=True, text=True, encoding="utf-8").strip()
+                shares_output = subprocess.check_output(cmd_shares, shell=True, text=True, encoding="utf-8", creationflags=subprocess.CREATE_NO_WINDOW).strip()
                 shares_data = json.loads(shares_output)
 
                 if isinstance(shares_data, dict):
@@ -329,11 +353,11 @@ def get_remote_access_settings():
             # Determine final verdict
             if not insecure_permissions:
                 if signing or encryption:
-                    verdict = "Enabled, Low Risk"
+                    verdict = "Enabled, Low Risk (Default settings)"
                 else:
-                    verdict = "Enabled, Moderate Risk"
+                    verdict = "Enabled, Moderate Risk (Weak SMB configuration)"
             else:
-                verdict = "Enabled, Potentially Dangerous (shares allow Guest/Everyone/Anonymous access or weak SMB configuration)"
+                verdict = "Enabled, Potentially Dangerous (Allow Guest/Everyone/Anonymous access)"
         else:
             verdict = "Disabled"
 
@@ -368,18 +392,18 @@ def get_remote_access_settings():
 
             # --- Assess risk ---
             if service_running:
-                verdict = "Enabled, Low Risk"
+                verdict = "Enabled, Low Risk (Default settings)"
             else:
-                verdict = "Enabled, Potentially Dangerous (service inactive or misconfigured, may allow unprotected pairing attempts)"
+                verdict = "Enabled, Moderate Risk (Bluetooth Support Service stopped)"
 
             result["Bluetooth"] = verdict
 
     except subprocess.CalledProcessError:
-        result["Bluetooth"] = "Disabled"
+        result["Bluetooth"] = "Unknown"
     except Exception:
         result["Bluetooth"] = "Unknown"
 
-    # --- COM Network Service ---
+    # --- DCOM ---
     try:
         # --- Check if DCOM is enabled ---
         cmd = r'powershell -Command "Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Ole -ErrorAction SilentlyContinue | Select-Object -ExpandProperty EnableDCOM"'
@@ -422,7 +446,7 @@ def get_remote_access_settings():
 
             # 🔹 Determine final verdict
             if auth_state in ["Packet Integrity (Safe)", "Packet Privacy (Best)"]:
-                reg_state = "Enabled, Low Risk"
+                reg_state = "Enabled, Low Risk (Secured authentication)"
             elif harden_state == "Enabled":
                 reg_state = "Enabled, Hardened by Patch"
             else:
@@ -440,7 +464,7 @@ def get_remote_access_settings():
     except Exception:
         reg_state = "Unknown"
 
-    result["COM Network Service"] = reg_state
+    result["DCOM"] = reg_state
 
     # --- NetBIOS ---
     try:
@@ -459,7 +483,7 @@ def get_remote_access_settings():
         with winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE) as hklm:
             with winreg.OpenKey(hklm, key_path) as key:
                 ra_value, _ = winreg.QueryValueEx(key, "fAllowToGetHelp")
-                result["Remote Assistance"] = "Enabled" if ra_value == 1 else "Disabled"
+                result["Remote Assistance"] = "Enabled, Potentially Dangerous" if ra_value == 1 else "Disabled"
     except FileNotFoundError:
         result["Remote Assistance"] = "Disabled"
     except PermissionError:
@@ -488,7 +512,7 @@ def get_remote_access_settings():
             listener_status = subprocess.check_output(cmd_listener, shell=True, text=True, encoding="utf-8").strip().lower()
 
             if "enabled" in listener_status:
-                result["PowerShell Remoting"] = "Enabled"
+                result["PowerShell Remoting"] = "Enabled, Potentially Dangerous"
             else:
                 # Fallback: AllowRemoteShellAccess registry
                 cmd_reg = (
@@ -497,7 +521,7 @@ def get_remote_access_settings():
                 )
                 reg_status = subprocess.check_output(cmd_reg, shell=True, text=True, encoding="utf-8").strip().lower()
                 if reg_status in ("enabled", "1", "true"):
-                    result["PowerShell Remoting"] = "Enabled"
+                    result["PowerShell Remoting"] = "Enabled, Potentially Dangerous"
                 elif reg_status == "disabled":
                     result["PowerShell Remoting"] = "Disabled"
                 else:
@@ -540,11 +564,11 @@ def get_remote_access_settings():
 
                 # Determine risk with explanations
                 if restrict_clients == "1" and privacy_enabled == "1":
-                    verdict = "Enabled, Low Risk (restricted to authenticated clients and privacy enabled)"
+                    verdict = "Enabled, Low Risk (Restricted clients and privacy enabled)"
                 elif restrict_clients == "1" or privacy_enabled == "1":
-                    verdict = "Enabled, Moderate Risk (partially secured; either restricted clients or privacy enabled)"
+                    verdict = "Enabled, Moderate Risk (Ether restricted clients or privacy enabled)"
                 else:
-                    verdict = "Enabled, Potentially Dangerous (open to unauthenticated network access, no privacy)"
+                    verdict = "Enabled, Potentially Dangerous (Unauthenticated network access)"
 
             else:
                 verdict = "Disabled"
@@ -623,6 +647,50 @@ def get_remote_access_settings():
 
     except Exception:
         result["UPnPHost"] = "Unknown"
+
+    # --- Remote Registry ---
+    try:
+        # --- Check RemoteRegistry service startup type ---
+        config_output = subprocess.check_output(
+            ["sc", "qc", "RemoteRegistry"],
+            text=True,
+            encoding="utf-8",
+            stderr=subprocess.DEVNULL
+        ).lower()
+
+        if "start_type" not in config_output:
+            reg_state = "Unknown"
+
+        elif "disabled" in config_output:
+            reg_state = "Disabled"
+
+        elif "auto_start" in config_output or "demand_start" in config_output:
+            # --- Check whether the service is currently running ---
+            try:
+                state_output = subprocess.check_output(
+                    ["sc", "query", "RemoteRegistry"],
+                    text=True,
+                    encoding="utf-8",
+                    stderr=subprocess.DEVNULL
+                ).lower()
+
+                if "running" in state_output:
+                    reg_state = "Enabled, Potentially Dangerous (Service running)"
+                else:
+                    reg_state = "Enabled, Low Risk (Service stopped)"
+
+            except Exception:
+                reg_state = "Enabled, Potentially Dangerous (Service State unknown)"
+
+        else:
+            reg_state = "Unknown"
+
+    except subprocess.CalledProcessError:
+        reg_state = "Unknown"
+    except Exception:
+        reg_state = "Unknown"
+
+    result["Remote Registry"] = reg_state
     
     # --- WinRM ---
     winrm_data = audit_winrm()         # run full WinRM audit
