@@ -1,4 +1,4 @@
-# Secuditor Lite 2.3.1 – Security Checks & Diagnostics
+# Secuditor Lite 2.3.5 – Security Checks & Diagnostics
 
 This file lists the structured and comprehensive security audit elements that **Secuditor Lite** checks on Windows systems, helping identify misconfigurations, vulnerabilities, and potential risks across **endpoint, network, and operational security layers**.
 
@@ -85,15 +85,8 @@ For complete and accurate results, the tool should be run with **administrator p
 - Telnet, Rsync, NetBIOS, UPnPHost, and Bluetooth exposure
 - WinRM configuration and risk level analysis
 - SMB protocol versions (SMBv1 / SMBv2)
-
----
-
-### 🖥️ Server & Service Exposure
-- Active server roles and features, with potential exposure assessment
-- Wweb server (IIS) and database (SQL Server) services
-- Infrastructure services, including DHCP, DNS, DFSR, FTP, LDAP, SSH, SNMP, SMTP and more
-- Analysis of remote access services and infrastructure components
-- Identification of potentially insecure protocols and service configurations
+- FTP service detection using multiple methods
+- Remote Registry service configuration check
 
 ---
 
