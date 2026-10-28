@@ -3,7 +3,18 @@ All notable changes to **Secuditor Lite** are documented in this file.
 
 ---
 
-## [2.3.1] – 2026-10-15 Latest
+## [2.3.5] – 2026-10-28 Latest
+- Added a Windows Anonymous Access service configuration check
+- Added a Remote Registry service configuration check
+- Added driver signature validation to the Bluetooth security check
+- Extended FTP service detection in the Remote Access module
+- Improved classification of signed Windows processes
+- Removed the Server Features check module
+- Minor bug fixes and security updates
+
+---
+
+## [2.3.1] – 2026-10-15
 - Added executable memory detection to the Suspicious Activity module 
 - Improved incoming connection detection in the Traffic Flow module
 - Minor bug fixes and security updates
