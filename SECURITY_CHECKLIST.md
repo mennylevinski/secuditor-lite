@@ -66,8 +66,8 @@ For complete and accurate results, the tool should be run with **administrator p
 - Core isolation and memory protection
 - Attack Surface Reduction (ASR) rules
 - PowerShell execution policy review
+- Windows Anonymous Access status check
 - Data Execution Prevention (DEP) status
-- EFS encryption protocol usage
 - Disk encryption (BitLocker) status
 - Office macro security policy review
 - Removable storage status check
@@ -82,9 +82,9 @@ For complete and accurate results, the tool should be run with **administrator p
 - PowerShell remoting configuration analysis
 - RPC Print Spooler and remote service exposure
 - DCOM Service vulnerability analysis
-- Telnet, Rsync, NetBIOS, UPnPHost, and Bluetooth exposure
+- Rsync, NetBIOS, UPnPHost, and Bluetooth exposure
 - WinRM configuration and risk level analysis
-- SMB protocol versions (SMBv1 / SMBv2)
+- SMB protocol version analysis (SMBv1/SMBv2)
 - FTP service detection using multiple methods
 - Remote Registry service configuration check
 
